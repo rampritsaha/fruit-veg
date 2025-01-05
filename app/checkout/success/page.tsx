@@ -1,9 +1,8 @@
-"use client";
-
 import { Container } from "@/components/layout/Container";
 import { stripe } from "@/lib/stripe";
 import { CheckCircle } from "lucide-react";
 import { redirect } from "next/navigation";
+export const dynamic = "force-dynamic";
 
 export default async function SuccessPage({
   searchParams,
