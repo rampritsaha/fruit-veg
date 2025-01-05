@@ -1,22 +1,7 @@
 import { Container } from "@/components/layout/Container";
-import { stripe } from "@/lib/stripe";
 import { CheckCircle } from "lucide-react";
-import { redirect } from "next/navigation";
-export const dynamic = "force-dynamic";
 
-export default async function SuccessPage({
-  searchParams,
-}: {
-  searchParams: { session_id: string };
-}) {
-  if (!searchParams.session_id) {
-    redirect("/");
-  }
-
-  const session = await stripe.checkout.sessions.retrieve(
-    searchParams.session_id
-  );
-
+export default async function SuccessPage() {
   return (
     <Container className="py-12">
       <div className="max-w-md mx-auto text-center">
@@ -26,12 +11,7 @@ export default async function SuccessPage({
           Your payment was successful. We&rsquo;ll send you an email
           confirmation shortly.
         </p>
-        <p className="text-sm text-muted-foreground">
-          Order ID:{" "}
-          {typeof session.payment_intent === "string"
-            ? session.payment_intent
-            : session.payment_intent?.id || "N/A"}
-        </p>
+        <p className="text-sm text-muted-foreground">Order ID: </p>
       </div>
     </Container>
   );
