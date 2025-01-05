@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/layout/Container";
 import { stripe } from "@/lib/stripe";
 import { CheckCircle } from "lucide-react";
